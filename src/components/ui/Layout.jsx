@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { Outlet } from 'react-router-dom';
 
 import Navbar from './Navbar';
@@ -7,7 +7,8 @@ import Footer from './Footer';
 
 const Layout = () => {
   return (
-    <Container fixed>
+    <Container fixed sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <Box sx={{ p: 4 }} />
       <Navbar />
       <Outlet />
       <Footer />
