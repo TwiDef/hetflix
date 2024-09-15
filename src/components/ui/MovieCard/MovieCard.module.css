@@ -1,0 +1,17 @@
+.img {
+    transition: 0.2s ease-in-out;
+    width: 220px;
+    height: 310px;
+}
+
+.img:hover {
+    transform: scale(1.05);
+}
+
+.rating {
+    transition: 0.2s ease-in-out;
+}
+
+.rating:hover {
+    transform: scale(1.1);
+}

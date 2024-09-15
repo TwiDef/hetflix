@@ -14,12 +14,12 @@ const Footer = () => {
         mt: "auto"
       }}>
 
-      <Typography variant="body2" color="text.secondary" sx={{ textAlign: { sm: "center" } }}>
+      <Typography variant="body2" sx={{ textAlign: { sm: "center" }, color: "white" }}>
         &copy; {new Date().getFullYear()}&laquo;hetflix&raquo; <br />
         not for copy
       </Typography>
 
-      <Typography variant="h5" color="text.secondary" sx={{ fontWeight: "bold" }}>
+      <Typography variant="h5" sx={{ fontWeight: "bold", color: "white" }}>
         hetflix
       </Typography>
     </Stack >

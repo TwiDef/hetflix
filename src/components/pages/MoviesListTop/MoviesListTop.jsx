@@ -21,20 +21,19 @@ const MoviesListTop = () => {
 
   if (isLoading) return <p>LOADING</p>
 
-  console.log(data)
-
   return (
-    <div>
+    <>
       <Stack flexDirection={"row"}>
-        <Button>Back</Button>
+        <Button>Назад</Button>
         <Typography>{movieType.title}</Typography>
       </Stack>
+
       <MoviesList
         movies={data.items}
         totalPages={data.totalPages}
         page={page}
         setPage={setPage} />
-    </div>
+    </>
   );
 };
 

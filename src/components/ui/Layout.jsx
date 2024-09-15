@@ -7,12 +7,14 @@ import Footer from './Footer';
 
 const Layout = () => {
   return (
-    <Container fixed sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      <Box sx={{ p: 4 }} />
-      <Navbar />
-      <Outlet />
-      <Footer />
-    </Container>
+    <Box sx={{ bgcolor: "#757575" }}>
+      <Container fixed sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+        <Box sx={{ p: 4 }} />
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </Container>
+    </Box>
   );
 };
 
