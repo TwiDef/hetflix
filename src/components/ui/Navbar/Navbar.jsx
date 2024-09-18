@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Drawer from '@mui/material/Drawer';
 import Slide from '@mui/material/Slide';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
-import MenuIcon from '@mui/icons-material/Menu';
+import WidgetsIcon from '@mui/icons-material/Widgets';
 import Box from '@mui/material/Box';
 
 const Icon = ({ iconName }) => {
@@ -39,7 +39,7 @@ const Navbar = () => {
         <Container maxWidth="lg">
           <Toolbar >
             <IconButton color="inherit" onClick={handleDrawerToggle}>
-              <MenuIcon />
+              <WidgetsIcon />
             </IconButton>
             <Drawer open={isOpen} onClose={handleDrawerToggle}>
               <Box sx={{ width: 300 }} onClick={handleDrawerToggle}>

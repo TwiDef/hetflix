@@ -5,6 +5,7 @@ import { store } from './redux/store';
 import { CssBaseline } from '@mui/material';
 
 import App from './components/ui/App';
+import './main.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>

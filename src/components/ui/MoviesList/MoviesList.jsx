@@ -6,9 +6,19 @@ import MovieCard from '../MovieCard';
 
 const MoviesList = ({ movies, totalPages, page, setPage }) => {
 
+  const handleChangePage = (event, value) => {
+    setPage(value)
+    window.scroll(0, 0)
+  }
+
   return (
     <>
-      <Stack direction="row" justifyContent="space-between" flexWrap="wrap">
+      <Stack
+        direction="row"
+        justifyContent="center"
+        /* justifyContent="space-between"  */
+        gap={2}
+        flexWrap="wrap">
         {movies && movies.map(movie => {
           return (
             <MovieCard
@@ -17,7 +27,14 @@ const MoviesList = ({ movies, totalPages, page, setPage }) => {
           )
         })}
       </Stack>
-      <Pagination count={totalPages} />
+
+      <Stack sx={{ mt: 4 }} direction="row" justifyContent="center">
+        <Pagination
+          count={totalPages}
+          shape="rounded"
+          page={page}
+          onChange={(event, value) => handleChangePage(event, value)} />
+      </Stack>
     </>
   );
 };

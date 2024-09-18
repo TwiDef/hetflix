@@ -7,7 +7,7 @@ import styles from './MovieCard.module.css';
 const MovieCard = ({ movie }) => {
 
   return (
-    <Stack sx={{ width: 200 }}>
+    <Stack sx={{ width: 220 }}>
       <Link to={`/movie/${movie.kinopoiskId}`} >
         <img className={styles.img} src={movie.posterUrlPreview} alt={movie.nameOriginal}></img>
       </Link>

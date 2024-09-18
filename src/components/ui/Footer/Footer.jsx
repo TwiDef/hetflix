@@ -10,11 +10,11 @@ const Footer = () => {
         pt: 4, pb: 4,
         flexDirection: { sm: "row" },
         justifyContent: { sm: "space-between" },
-        alignItems: { sm: "center" },
-        mt: "auto"
+        mt: "auto",
+        alignItems: "center"
       }}>
 
-      <Typography variant="body2" sx={{ textAlign: { sm: "center" }, color: "white" }}>
+      <Typography variant="body2" sx={{ textAlign: "center", color: "white" }}>
         &copy; {new Date().getFullYear()}&laquo;hetflix&raquo; <br />
         not for copy
       </Typography>
