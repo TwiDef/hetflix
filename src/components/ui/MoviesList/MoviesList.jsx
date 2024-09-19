@@ -1,13 +1,17 @@
 import React from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { setPage } from '../../../redux/slices/curentQuerySlice';
 import { Pagination, Stack } from '@mui/material';
 
 import MovieCard from '../MovieCard';
 
-const MoviesList = ({ movies, totalPages, page, setPage }) => {
+const MoviesList = ({ movies, totalPages }) => {
+
+  const dispatch = useDispatch()
+  const { page } = useSelector(state => state.currentQuery)
 
   const handleChangePage = (event, value) => {
-    setPage(value)
+    dispatch(setPage(value))
     window.scroll(0, 0)
   }
 

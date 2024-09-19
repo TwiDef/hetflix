@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import { useGetTopFilmsQuery } from '../../../services/kinopoiskApi';
+import { setPage } from '../../../redux/slices/curentQuerySlice';
 import { TOP_LISTS } from '../../../constants';
 import { Button, Stack, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -12,7 +14,8 @@ import styles from './MoviesListTop.module.css';
 const MoviesListTop = () => {
   const location = useLocation()
   const navigate = useNavigate()
-  const [page, setPage] = React.useState(1)
+  const dispatch = useDispatch()
+  const { page } = useSelector(state => state.currentQuery)
   const movieType = TOP_LISTS.find(el => el.url === location.pathname)
 
   const { data, error, isLoading } = useGetTopFilmsQuery({
@@ -21,7 +24,7 @@ const MoviesListTop = () => {
   })
 
   React.useEffect(() => {
-    setPage(1)
+    dispatch(setPage(1))
   }, [location])
 
   if (error) return <p>ERROR</p>
@@ -41,9 +44,7 @@ const MoviesListTop = () => {
 
       <MoviesList
         movies={data.items}
-        totalPages={data.totalPages}
-        page={page}
-        setPage={setPage} />
+        totalPages={data.totalPages} />
     </>
   );
 };
