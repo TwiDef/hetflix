@@ -1,0 +1,8 @@
+.carousel button { 
+    opacity: .8;
+    background-color: #080808;
+}
+
+.carousel button:hover {
+    box-shadow: 0 0 10px #efefef;
+}

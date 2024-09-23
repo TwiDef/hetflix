@@ -1,7 +1,13 @@
 import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import useMoviesQuery from '../../../hooks/useMoviesQuery';
 import BearCarousel, { BearSlideImage } from 'bear-react-carousel';
-import { Stack } from '@mui/material';
+import { Stack, Link } from '@mui/material';
+
+import MoviesSkeleton from './MoviesSkeleton/MoviesSkeleton';
+import ErrorMessage from '../../ui/ErrorMessage';
+
+import styles from './Movies.module.css';
 
 const Movies = () => {
 
@@ -13,14 +19,18 @@ const Movies = () => {
     responseSerials,
     responseCartoons } = useMoviesQuery()
 
-  if (isLoading) return <p>Loading...</p>
+  if (isLoading) return <MoviesSkeleton />
 
-  if (isError) return <p>Error message</p>
+  if (isError) return <ErrorMessage />
 
   const serializeDataForCarousel = (data) => {
     return data.map(row => {
-      return <BearSlideImage key={row.id} imageUrl={row.posterUrlPreview}>
-      </BearSlideImage>
+      return (
+        <RouterLink to={`/movie/${row.kinopoiskId}`} key={row.id}>
+          <BearSlideImage imageUrl={row.posterUrlPreview}>
+          </BearSlideImage>
+        </RouterLink>
+      )
     })
   }
 
@@ -59,12 +69,18 @@ const Movies = () => {
 
   return (
     <Stack direction="column">
-
       {carouselArray.map((array, i) => {
         return (
           <div key={i}>
-            <h2 style={{ margin: "20px 0 10px" }}>{array.title}</h2>
+            <p style={{ padding: "10px 0 20px", margin: "0" }}>
+              <Link
+                component={RouterLink}
+                to={array.url}
+                sx={{ color: "black", textDecoration: "none" }}
+                variant="h4">{array.title}</Link>
+            </p>
             <BearCarousel
+              className={styles.carousel}
               key={i}
               data={array.data}
               isEnableNavButton={true}
@@ -74,11 +90,13 @@ const Movies = () => {
               autoPlayTime={array.playTime}
               breakpoints={{
                 375: {
-                  isEnableNavButton: false
+                  isEnableNavButton: false,
+                  isEnableAutoPlay: false
                 },
                 640: {
                   slidesPerView: 2,
-                  isEnableNavButton: false
+                  isEnableNavButton: false,
+                  isEnableAutoPlay: false
                 },
                 768: {
                   slidesPerView: 3,
@@ -92,9 +110,8 @@ const Movies = () => {
           </div>
         )
       })}
-    </Stack>
+    </Stack >
   )
-
 };
 
 export default Movies;
