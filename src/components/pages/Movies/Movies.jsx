@@ -4,7 +4,7 @@ import useMoviesQuery from '../../../hooks/useMoviesQuery';
 import BearCarousel, { BearSlideImage } from 'bear-react-carousel';
 import { Stack, Link } from '@mui/material';
 
-import MoviesSkeleton from './MoviesSkeleton/MoviesSkeleton';
+import MoviesSkeleton from './MoviesSkeleton';
 import ErrorMessage from '../../ui/ErrorMessage';
 
 import styles from './Movies.module.css';
@@ -19,7 +19,7 @@ const Movies = () => {
     responseSerials,
     responseCartoons } = useMoviesQuery()
 
-  if (isLoading) return <MoviesSkeleton />
+  if (!isLoading) return <MoviesSkeleton />
 
   if (isError) return <ErrorMessage />
 
