@@ -11,23 +11,23 @@ const MoviesSkeleton = () => {
   const storeSizes = {
     width: isDesktop ? 208 :
       isLargeTablet ? 260 :
-        isSmallTablet ? 256 :
-          isLargeMobile ? 460 :
-            isSmallMobile ? 305 :
-              180,
+        isSmallTablet ? 164 :
+          isLargeMobile ? 256 :
+            isSmallMobile ? 420 :
+              300,
     height: isDesktop ? 320 :
       isLargeTablet ? 400 :
-        isSmallTablet ? 392 :
-          isLargeMobile ? 606 :
-            isSmallMobile ? 465 :
-              280,
+        isSmallTablet ? 256 :
+          isLargeMobile ? 392 :
+            isSmallMobile ? 640 :
+              460,
   }
 
   const calculateCardsQuantity = () => {
     if (isDesktop) return 5
     if (isLargeTablet) return 3
-    if (isSmallTablet) return 2
-    if (isLargeMobile) return 1
+    if (isSmallTablet) return 3
+    if (isLargeMobile) return 2
     return 1
   }
 

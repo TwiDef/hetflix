@@ -19,7 +19,7 @@ const Movies = () => {
     responseSerials,
     responseCartoons } = useMoviesQuery()
 
-  if (!isLoading) return <MoviesSkeleton />
+  if (isLoading) return <MoviesSkeleton />
 
   if (isError) return <ErrorMessage />
 
