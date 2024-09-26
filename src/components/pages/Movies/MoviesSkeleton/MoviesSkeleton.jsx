@@ -32,34 +32,32 @@ const MoviesSkeleton = () => {
   }
 
   return (
-    <>
-      <Box mb={2}>
-        {new Array(5).fill(null).map((_, i) => {
-          return (
-            <React.Fragment key={i}>
-              <Skeleton
-                sx={{ mb: 2, mt: 2 }}
-                animation="wave"
-                variant="rectangular"
-                width="310px"
-                height="30px" />
-              <Stack direction="row" justifyContent="center" gap={2}>
-                {new Array(calculateCardsQuantity()).fill(null).map((_, i) => {
-                  return (
-                    <Skeleton
-                      key={i}
-                      animation="wave"
-                      variant="rectangular"
-                      width={storeSizes.width}
-                      height={storeSizes.height} />
-                  )
-                })}
-              </Stack>
-            </React.Fragment>
-          )
-        })}
-      </Box>
-    </>
+    <Box mb={2}>
+      {new Array(5).fill(null).map((_, i) => {
+        return (
+          <React.Fragment key={i}>
+            <Skeleton
+              sx={{ mb: 2, mt: 2 }}
+              animation="wave"
+              variant="rectangular"
+              width="310px"
+              height="30px" />
+            <Stack direction="row" justifyContent="center" gap={2}>
+              {new Array(calculateCardsQuantity()).fill(null).map((_, i) => {
+                return (
+                  <Skeleton
+                    key={i}
+                    animation="wave"
+                    variant="rectangular"
+                    width={storeSizes.width}
+                    height={storeSizes.height} />
+                )
+              })}
+            </Stack>
+          </React.Fragment>
+        )
+      })}
+    </Box>
   )
 };
 

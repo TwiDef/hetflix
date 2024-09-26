@@ -37,12 +37,14 @@ const Movies = () => {
   const carouselArray = [
     {
       title: "Популярные фильмы",
+      icon: "https://cdn-icons-png.flaticon.com/512/708/708865.png",
       url: "/popular",
       data: serializeDataForCarousel(responsePopular.data.items),
       playTime: 3000
     },
     {
       title: "Топ лучших фильмов",
+      icon: "https://cdn-icons-png.flaticon.com/512/3865/3865233.png",
       url: "/best",
       data: serializeDataForCarousel(responseBest.data.items),
       playTime: 4000
@@ -50,18 +52,21 @@ const Movies = () => {
     {
       title: "Мультфильмы",
       url: "/cartoons",
+      icon: "https://cdn-icons-png.flaticon.com/512/404/404741.png",
       data: serializeDataForCarousel(responseCartoons.data.items),
       playTime: 5000
     },
     {
       title: "Фильмы",
       url: "/films",
+      icon: "https://cdn-icons-png.flaticon.com/512/777/777242.png",
       data: serializeDataForCarousel(responseFilms.data.items),
       playTime: 6000
     },
     {
       title: "Сериалы",
       url: "/serials",
+      icon: "https://cdn-icons-png.flaticon.com/512/2798/2798007.png",
       data: serializeDataForCarousel(responseSerials.data.items),
       playTime: 7000
     }
@@ -72,13 +77,16 @@ const Movies = () => {
       {carouselArray.map((array, i) => {
         return (
           <div key={i}>
-            <p style={{ padding: "10px 0 20px", margin: "0" }}>
-              <Link
-                component={RouterLink}
-                to={array.url}
-                sx={{ color: "black", textDecoration: "none" }}
-                variant="h4">{array.title}</Link>
-            </p>
+            <Stack direction="row" alignItems="center" gap={1}>
+              <img width={40} height={40} src={array.icon} alt="category-icon" />
+              <p style={{ padding: "10px 0 20px", margin: "0" }}>
+                <Link
+                  component={RouterLink}
+                  to={array.url}
+                  sx={{ color: "black", textDecoration: "none" }}
+                  variant="h4">{array.title}</Link>
+              </p>
+            </Stack>
             <BearCarousel
               className={styles.carousel}
               key={i}

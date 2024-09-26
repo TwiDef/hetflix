@@ -2,12 +2,12 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import { kinopoiskApi } from '../services/kinopoiskApi'
 
-import curentQueryReducer from './slices/curentQuerySlice'
+import currentQueryReducer from './slices/currentQuerySlice'
 
 export const store = configureStore({
   reducer: {
     [kinopoiskApi.reducerPath]: kinopoiskApi.reducer,
-    currentQuery: curentQueryReducer
+    currentQuery: currentQueryReducer
   },
 
   middleware: (getDefaultMiddleware) =>

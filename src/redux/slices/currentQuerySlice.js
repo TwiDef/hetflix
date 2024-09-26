@@ -7,8 +7,8 @@ const initialState = {
   page: 1
 }
 
-export const curentQuerySlice = createSlice({
-  name: 'curentQuerySlice',
+export const currentQuerySlice = createSlice({
+  name: 'currentQuerySlice',
   initialState,
   reducers: {
     setPage: (state, action) => {
@@ -17,6 +17,6 @@ export const curentQuerySlice = createSlice({
   },
 })
 
-export const { setPage } = curentQuerySlice.actions
+export const { setPage } = currentQuerySlice.actions
 
-export default curentQuerySlice.reducer
+export default currentQuerySlice.reducer

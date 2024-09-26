@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setPage } from '../../../redux/slices/curentQuerySlice';
+import { setPage } from '../../../redux/slices/currentQuerySlice';
 import { Pagination, Stack } from '@mui/material';
 
 import MovieCard from '../MovieCard';
