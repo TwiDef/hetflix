@@ -4,6 +4,7 @@ import { setPage } from '../../../redux/slices/currentQuerySlice';
 import { Pagination, Stack } from '@mui/material';
 
 import MovieCard from '../MovieCard';
+import SelectMovies from '../SelectMovies/SelectMovies';
 
 const MoviesList = ({ movies, totalPages }) => {
 
@@ -17,6 +18,7 @@ const MoviesList = ({ movies, totalPages }) => {
 
   return (
     <>
+      <SelectMovies />
       <Stack
         direction="row"
         justifyContent="center"
