@@ -13,10 +13,16 @@ export const currentQuerySlice = createSlice({
   reducers: {
     setPage: (state, action) => {
       state.page = action.payload
+    },
+    setOrder: (state, action) => {
+      state.order = action.payload
+    },
+    setGenreId: (state, action) => {
+      state.genreId = action.payload
     }
   },
 })
 
-export const { setPage } = currentQuerySlice.actions
+export const { setPage, setOrder, setGenreId } = currentQuerySlice.actions
 
 export default currentQuerySlice.reducer

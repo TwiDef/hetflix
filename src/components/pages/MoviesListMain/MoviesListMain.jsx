@@ -17,6 +17,7 @@ const MoviesListMain = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const { page, order, genreId } = useSelector(state => state.currentQuery)
   const movieType = MOVIE_LISTS.find(el => el.url === location.pathname)
   const currentGenreId = movieType.url === "/cartoons" ? 18 : genreId
@@ -48,6 +49,7 @@ const MoviesListMain = () => {
       </Stack>
 
       <MoviesList
+        currentGenreId={currentGenreId}
         movies={data.items}
         totalPages={data.totalPages} />
     </>

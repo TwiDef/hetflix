@@ -6,7 +6,7 @@ import { Pagination, Stack } from '@mui/material';
 import MovieCard from '../MovieCard';
 import SelectMovies from '../SelectMovies/SelectMovies';
 
-const MoviesList = ({ movies, totalPages }) => {
+const MoviesList = ({ movies, totalPages, currentGenreId }) => {
 
   const dispatch = useDispatch()
   const { page } = useSelector(state => state.currentQuery)
@@ -18,7 +18,7 @@ const MoviesList = ({ movies, totalPages }) => {
 
   return (
     <>
-      <SelectMovies />
+      <SelectMovies currentGenreId={currentGenreId} />
       <Stack
         direction="row"
         justifyContent="center"
