@@ -29,8 +29,18 @@ export const kinopoiskApi = createApi({
       }
     }),
     getMovieDetail: builder.query({
-      query: ({ id }) => {
+      query: (id) => {
         return `/v2.2/films/${id}`
+      }
+    }),
+    getSequelsAndPrequels: builder.query({
+      query: (id) => {
+        return `/v2.1/films/${id}/sequels_and_prequels`
+      }
+    }),
+    getStaff: builder.query({
+      query: (id) => {
+        return `/v1/staff?filmId=${id}`
       }
     }),
     getGenres: builder.query({
@@ -41,4 +51,10 @@ export const kinopoiskApi = createApi({
   }),
 })
 
-export const { useGetTopFilmsQuery, useGetMovieDetailQuery, useGetFilmsQuery, useGetGenresQuery } = kinopoiskApi
+export const {
+  useGetTopFilmsQuery,
+  useGetMovieDetailQuery,
+  useGetSequelsAndPrequelsQuery,
+  useGetStaffQuery,
+  useGetFilmsQuery,
+  useGetGenresQuery } = kinopoiskApi

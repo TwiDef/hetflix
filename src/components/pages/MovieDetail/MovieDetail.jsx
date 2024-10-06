@@ -1,22 +1,40 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { useGetMovieDetailQuery } from './../../../services/kinopoiskApi';
+import { useParams } from 'react-router-dom';
+import {
+  useGetMovieDetailQuery,
+  useGetSequelsAndPrequelsQuery,
+  useGetStaffQuery
+} from './../../../services/kinopoiskApi';
+
+import Loader from './../../ui/Loader/Loader';
+import ErrorMessage from './../../ui/ErrorMessage/ErrorMessage';
 
 const MovieDetail = () => {
+  const { id } = useParams()
 
-  const getNumFromStr = (string) => {
-    return (string).replace(/[^0-9]/g, '')
+  const responseMovie = useGetMovieDetailQuery(id)
+  const responseStaff = useGetStaffQuery(id)
+  const responseSequelsAndPrequels = useGetSequelsAndPrequelsQuery(id)
+
+  if (responseMovie.isLoading ||
+    responseStaff.isLoading ||
+    responseSequelsAndPrequels && responseSequelsAndPrequels.isLoading) {
+    return <Loader />
   }
-  const location = useLocation()
 
-  const { data, error, isLoading } = useGetMovieDetailQuery({
-    id: getNumFromStr(location.pathname)
-  })
+  if (responseMovie.isError ||
+    responseStaff.isError ||
+    !responseSequelsAndPrequels && responseSequelsAndPrequels.isError) {
+    return <ErrorMessage />
+  }
+
+  console.log(responseSequelsAndPrequels.data)
+
 
   return (
-    <div>
-      <img width={300} src={data ? data.posterUrlPreview : ""}></img>
-    </div>
+    <>
+      <img width={300} src={responseMovie.data ? responseMovie.data.posterUrlPreview : ""} />
+    </>
   );
 };
 
