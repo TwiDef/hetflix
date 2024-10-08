@@ -1,0 +1,11 @@
+.buttonBack:global(.MuiButton-root) {
+    color: #757575;
+}
+
+.buttonBack:global(.MuiButton-root:hover) {
+    background-color: #525252;
+}
+
+.item {
+    border-bottom: solid 2px #6a6a6a;
+}
