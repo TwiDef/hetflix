@@ -6,7 +6,7 @@ import {
   useGetStaffQuery
 } from './../../../services/kinopoiskApi';
 
-import { Grid, Button, Typography, ButtonGroup, Box } from '@mui/material';
+import { Grid, Button, Typography, ButtonGroup, Box, Stack } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import ReplyIcon from '@mui/icons-material/Reply';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
@@ -16,6 +16,7 @@ import Loader from './../../ui/Loader/Loader';
 import ErrorMessage from './../../ui/ErrorMessage/ErrorMessage';
 
 import styles from './MovieDetail.module.css'
+import MovieCard from '../../ui/MovieCard';
 
 
 const MovieDetail = () => {
@@ -133,7 +134,21 @@ const MovieDetail = () => {
               endIcon={<LiveTvIcon />}>IMDB</Button>
           </ButtonGroup>
         </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h5" textAlign="center">watch online</Typography>
+          <video width={500} height={250} />
+        </Grid>
       </Grid>
+
+      <Stack display="flex" flexDirection="row" flexWrap="wrap" alignItems="center" justifyContent="center" gap={1}>
+        {responseSequelsAndPrequels.data &&
+          responseSequelsAndPrequels.data.map(movie => {
+            return (
+              <MovieCard key={movie.filmId} movie={movie} />
+            )
+          })}
+      </Stack>
+
     </>
   );
 };
