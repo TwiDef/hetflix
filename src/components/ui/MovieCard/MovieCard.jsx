@@ -8,7 +8,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <Stack sx={{ width: 220 }}>
-      <Link to={`/movie/${movie.kinopoiskId}`} >
+      <Link to={`/movie/${movie.kinopoiskId ? movie.kinopoiskId : movie.filmId}`} >
         <img className={styles.img} src={movie.posterUrlPreview} alt={movie.nameOriginal}></img>
       </Link>
       <Typography

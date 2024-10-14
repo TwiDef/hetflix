@@ -9,3 +9,21 @@
 .item {
     border-bottom: solid 2px #6a6a6a;
 }
+
+.kinoboxWrapper {
+    width: 600px;
+}
+
+@media (max-width: 768px) {
+    .kinoboxWrapper {
+        width: 500px;
+        height: 100%;
+    }
+}
+
+@media (max-width: 640px) {
+    .kinoboxWrapper {
+        width: 400px;
+        height: 100%;
+    }
+}

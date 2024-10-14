@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import {
   useGetMovieDetailQuery,
@@ -17,6 +17,7 @@ import ErrorMessage from './../../ui/ErrorMessage/ErrorMessage';
 
 import styles from './MovieDetail.module.css'
 import MovieCard from '../../ui/MovieCard';
+import KinoboxPlayer from '../../ui/KinoboxPlayer/KinoboxPlayer';
 
 
 const MovieDetail = () => {
@@ -43,12 +44,12 @@ const MovieDetail = () => {
     <>
       <Grid container spacing={2} mt={1}>
         {/* 1 */}
-        <Grid item xs={4}>
+        <Grid item xs={12} md={4}>
           <img src={responseMovie.data.posterUrl} alt={responseMovie.data.nameOriginal} width="100%" />
         </Grid>
 
         {/* 2 */}
-        <Grid container item xs={6} alignItems="center" mb="auto">
+        <Grid item xs={12} md={6} container alignItems="center" mb="auto">
           <Grid item xs={2}>
             <Button className={styles.buttonBack} size="large" onClick={() => navigate(-1)}>
               <ReplyIcon sx={{ color: "white" }} />
@@ -79,7 +80,7 @@ const MovieDetail = () => {
             <Grid className={styles.item} item xs={6}><Typography>Режиссеры</Typography></Grid>
             <Grid className={styles.item} item xs={6}>{(responseStaff.data.filter(el => {
               return el.professionKey === "DIRECTOR"
-            })).map((el) => {
+            })).slice(0, 10).map((el) => {
               return <Typography key={el.staffId}>{el.nameRu ? el.nameRu : el.nameEn}</Typography>
             })}
             </Grid>
@@ -99,7 +100,7 @@ const MovieDetail = () => {
         </Grid>
 
         {/* 3 */}
-        <Grid container item xs={2} alignItems="center" mb="auto">
+        <Grid item xs={12} md={2} container alignItems="center" mb="auto">
           <Typography variant="h6" sx={{ lineHeight: 1, fontWeight: 600, mb: 2 }}>В главных ролях</Typography>
           {(responseStaff.data.filter(el => {
             return el.professionKey === "ACTOR"
@@ -109,15 +110,14 @@ const MovieDetail = () => {
             })}
         </Grid>
 
-      </Grid>
+      </Grid >
 
-      <Grid container spacing={2} display="flex" alignItems="center" direction="column">
+      <Grid container display="flex" alignItems="center" direction="column" mt={4}>
         <Grid item xs={12} >
           <ButtonGroup
             disableElevation
             variant="contained"
             sx={{
-              mt: 2,
               ".MuiButtonGroup-grouped:not(:last-of-type)": {
                 borderColor: "#fff"
               }
@@ -134,17 +134,31 @@ const MovieDetail = () => {
               endIcon={<LiveTvIcon />}>IMDB</Button>
           </ButtonGroup>
         </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h5" textAlign="center">watch online</Typography>
-          <video width={500} height={250} />
+        <Grid item xs={12} mt={4}>
+          <Typography gutterBottom variant="h5" textAlign="center" color="#ddd">Смотреть онлайн</Typography>
+
+          <div className={styles.kinoboxWrapper}>
+            <KinoboxPlayer
+              kinopoiskId={id}
+              imdbId={responseMovie.data && responseMovie.data.imdbId} />
+          </div>
         </Grid>
       </Grid>
 
-      <Stack display="flex" flexDirection="row" flexWrap="wrap" alignItems="center" justifyContent="center" gap={1}>
+      <Stack
+        display="flex"
+        flexDirection="row"
+        flexWrap="wrap"
+        alignItems="center"
+        justifyContent="center"
+        gap={1}
+        mt={4}>
         {responseSequelsAndPrequels.data &&
           responseSequelsAndPrequels.data.map(movie => {
             return (
-              <MovieCard key={movie.filmId} movie={movie} />
+              <Box key={movie.filmId} onClick={() => window.scroll(0, 0)}>
+                <MovieCard movie={movie} />
+              </Box>
             )
           })}
       </Stack>
