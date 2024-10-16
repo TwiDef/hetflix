@@ -16,9 +16,6 @@
 }
 
 .autocomplete fieldset {
-    border-color: #dddddd;
-}
-
-.autocomplete fieldset {
+    border-width: 2px;
     border-color: #cdcdcd;
 }

@@ -12,10 +12,13 @@ export const searchQuerySlice = createSlice({
   name: 'searchQuerySlice',
   initialState,
   reducers: {
-
+    onChangeKeyword: (state, action) => ({
+      ...state,
+      keyword: action.payload.keyword
+    })
   },
 })
 
-export const { } = searchQuerySlice.actions
+export const { onChangeKeyword } = searchQuerySlice.actions
 
 export default searchQuerySlice.reducer
