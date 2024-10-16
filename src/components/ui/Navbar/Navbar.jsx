@@ -3,7 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { iconComponent, TOP_LISTS, MOVIE_LISTS } from '../../../constants';
 
-import { Container, Divider, Link, ListItemIcon, Typography } from '@mui/material';
+import { Container, Divider, Link, ListItemIcon, Stack, Typography } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -16,6 +16,7 @@ import Slide from '@mui/material/Slide';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import WidgetsIcon from '@mui/icons-material/Widgets';
 import Box from '@mui/material/Box';
+import Search from '../Search/Search';
 
 const Icon = ({ iconName }) => {
   const IconComponent = iconComponent[iconName]
@@ -86,12 +87,19 @@ const Navbar = () => {
                 </List>
               </Box>
             </Drawer>
-            <Typography
-              style={{ color: "white", textDecoration: "none" }}
-              variant="h5"
-              component={RouterLink} to="/" >
-              hetflix
-            </Typography>
+            <Stack
+              width="100%"
+              direction="row"
+              alignItems="center"
+              justifyContent="space-between">
+              <Typography
+                style={{ color: "white", textDecoration: "none" }}
+                variant="h5"
+                component={RouterLink} to="/" >
+                hetflix
+              </Typography>
+              <Search />
+            </Stack>
           </Toolbar>
         </Container>
       </AppBar>

@@ -24,8 +24,10 @@ export const kinopoiskApi = createApi({
         genreId,
         order = "NUM_VOTE",
         type = "FILM",
-        page }) => {
-        return `v2.2/films?genres=${genreId}&order=${order}&type=${type}&page=${page}`
+        page,
+        keyword = ""
+      }) => {
+        return `v2.2/films?genres=${genreId}&order=${order}&type=${type}&page=${page}&keyword=${keyword}`
       }
     }),
     getMovieDetail: builder.query({

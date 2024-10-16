@@ -145,23 +145,29 @@ const MovieDetail = () => {
         </Grid>
       </Grid>
 
-      <Stack
-        display="flex"
-        flexDirection="row"
-        flexWrap="wrap"
-        alignItems="center"
-        justifyContent="center"
-        gap={1}
-        mt={4}>
-        {responseSequelsAndPrequels.data &&
-          responseSequelsAndPrequels.data.map(movie => {
-            return (
-              <Box key={movie.filmId} onClick={() => window.scroll(0, 0)}>
-                <MovieCard movie={movie} />
-              </Box>
-            )
-          })}
-      </Stack>
+      {responseSequelsAndPrequels.data &&
+        <Grid item xs={12} mt={4}>
+          <Typography variant="h5" textAlign="center" color="#ddd">
+            Сиквелы и приквелы
+          </Typography>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+            gap={1}
+            mt={1}>
+
+            {responseSequelsAndPrequels.data.map(movie => {
+              return (
+                <Box key={movie.filmId} onClick={() => window.scroll(0, 0)}>
+                  <MovieCard movie={movie} />
+                </Box>
+              )
+            })}
+          </Stack>
+        </Grid>}
 
     </>
   );

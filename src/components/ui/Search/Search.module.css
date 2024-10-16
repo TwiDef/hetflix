@@ -1,0 +1,24 @@
+.autocomplete {
+    width: 240px;
+    border-color: #dddddd;
+}
+
+.autocomplete input {
+    color: #dddddd;
+}
+
+.autocomplete label {
+    color: #dddddd;
+}
+
+.autocomplete svg {
+    color: #dddddd;
+}
+
+.autocomplete fieldset {
+    border-color: #dddddd;
+}
+
+.autocomplete fieldset {
+    border-color: #cdcdcd;
+}
