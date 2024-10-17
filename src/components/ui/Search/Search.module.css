@@ -1,9 +1,10 @@
 .autocomplete {
-    width: 240px;
+    width: 340px;
     border-color: #dddddd;
 }
 
 .autocomplete input {
+    font-size: 16px;
     color: #dddddd;
 }
 
